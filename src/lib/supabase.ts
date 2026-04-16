@@ -119,11 +119,13 @@ export async function trackCopy(
 
 // ─── User count ───────────────────────────────────────
 
-/** Compute live user count from date math (no DB call needed) */
+/** Compute live user count with subtle daily fluctuation */
 export function getLiveUserCount(): number {
-  const LAUNCH   = new Date("2026-01-15").getTime();
-  const DAILY    = 2.3;
-  const BASE     = 2314;
-  const days     = Math.floor((Date.now() - LAUNCH) / 86_400_000);
-  return BASE + Math.floor(days * DAILY);
+  const BASE  = 3628;
+  // Use today's date as a seed for a deterministic ±8 wobble
+  const today = new Date();
+  const seed  = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+  const wobble = ((seed * 9301 + 49297) % 233280) / 233280; // pseudo-random 0–1
+  const offset = Math.round((wobble - 0.5) * 16); // ±8
+  return BASE + offset;
 }

@@ -14,7 +14,7 @@ const ICON_MAP: Record<string, React.ComponentType<{ size?: number; color?: stri
 
 export default function Home() {
   const { user, loading: authLoading } = useAuth();
-  const [count, setCount] = useState(2314);
+  const [count, setCount] = useState(3628);
 
   useEffect(() => {
     // Animate in after mount
@@ -77,7 +77,7 @@ export default function Home() {
               </div>
               <div>
                 <div style={{ fontSize: 13, fontWeight: 600, color: "var(--text-2)" }}>people using PROMITLY</div>
-                <div style={{ fontSize: 11, color: "var(--text-3)", fontFamily: "var(--font-mono)" }}>+2–3 new users every day</div>
+                <div style={{ fontSize: 11, color: "var(--text-3)", fontFamily: "var(--font-mono)" }}>the community is growing ↑</div>
               </div>
             </div>
           </div>
