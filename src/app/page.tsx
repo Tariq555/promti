@@ -76,7 +76,7 @@ export default function Home() {
                 />
               </div>
               <div>
-                <div style={{ fontSize: 13, fontWeight: 600, color: "var(--text-2)" }}>people using PROMTI</div>
+                <div style={{ fontSize: 13, fontWeight: 600, color: "var(--text-2)" }}>people using PROMITLY</div>
                 <div style={{ fontSize: 11, color: "var(--text-3)", fontFamily: "var(--font-mono)" }}>+2–3 new users every day</div>
               </div>
             </div>
@@ -169,7 +169,7 @@ export default function Home() {
                 Stop burning tokens<br />on bad prompts.
               </h2>
               <p style={{ fontSize: 16, color: "var(--text-2)", maxWidth: 480, margin: "0 auto", lineHeight: 1.7 }}>
-                A vague prompt triggers 6–8 back-and-forths. A PROMTI prompt gets the answer in one shot. That&apos;s real money and real time saved.
+                A vague prompt triggers 6–8 back-and-forths. A PROMITLY prompt gets the answer in one shot. That&apos;s real money and real time saved.
               </p>
             </div>
 
@@ -211,7 +211,7 @@ export default function Home() {
               <div className="card" style={{ padding: "22px", borderColor: "rgba(52,211,153,0.3)", boxShadow: "0 0 30px rgba(52,211,153,0.04)" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
                   <div style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--emerald)" }} />
-                  <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.14em", color: "var(--emerald)" }}>PROMTI PROMPT</span>
+                  <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.14em", color: "var(--emerald)" }}>PROMITLY PROMPT</span>
                 </div>
                 <div style={{ background: "#0b0b16", borderRadius: 8, padding: "12px 14px", marginBottom: 14, fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--text-2)", lineHeight: 1.8 }}>
                   {`You are a Node.js expert. Write JWT auth middleware for Express. Input: Bearer token header. Output: { user, role } or throw 401 with reason. TypeScript. No comments.`}
@@ -243,7 +243,7 @@ export default function Home() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, marginBottom: 40 }}>
               {[
                 { icon: <TrendingDown size={18} color="var(--primary)" />, stat: "80%", label: "fewer tokens used", sub: "vs unstructured prompts" },
-                { icon: <ZapIcon size={18} color="var(--primary)" />, stat: "1 shot", label: "average to final output", sub: "with a PROMTI prompt" },
+                { icon: <ZapIcon size={18} color="var(--primary)" />, stat: "1 shot", label: "average to final output", sub: "with a PROMITLY prompt" },
                 { icon: <CheckCircle2 size={18} color="var(--primary)" />, stat: "130+", label: "prompts available", sub: "across 12 categories" },
               ].map(({ icon, stat, label, sub }) => (
                 <div key={label} className="card" style={{ padding: "20px", textAlign: "center" }}>
@@ -377,8 +377,8 @@ export default function Home() {
 
       <footer style={{ background: "var(--bg)", borderTop: "1px solid var(--border)", padding: "32px 0" }}>
         <div className="page" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
-          <span style={{ fontFamily: "var(--font-sans)", fontSize: 15, fontWeight: 700, color: "var(--text-2)" }}>promti</span>
-          <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--text-4)" }}>© 2025 PROMTI · All rights reserved</span>
+          <span style={{ fontFamily: "var(--font-sans)", fontSize: 15, fontWeight: 700, color: "var(--text-2)" }}>promitly</span>
+          <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--text-4)" }}>© 2026 PROMITLY · All rights reserved</span>
           <div style={{ display: "flex", gap: 16 }}>
             {[["Privacy", "/privacy"], ["Terms", "/terms"], ["Contact", "/contact"]].map(([l, h]) => (
               <Link key={l} href={h} style={{ fontSize: 12, color: "var(--text-3)", textDecoration: "none" }}>{l}</Link>

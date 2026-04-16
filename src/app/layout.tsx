@@ -18,7 +18,7 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PROMTI — AI Prompt Library",
+  title: "PROMITLY — AI Prompt Library",
   description:
     "Browse 130+ expert prompts across 12 categories. Works with ChatGPT, Claude, Gemini, Grok, Mistral, DeepSeek, Llama, Perplexity, and more.",
 };

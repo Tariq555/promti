@@ -3,7 +3,7 @@ import { useState, useRef, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { verifyOtp } from "@/lib/supabase";
-import { Zap, Mail, ArrowRight, RefreshCw } from "lucide-react";
+import { Mail, ArrowRight, RefreshCw } from "lucide-react";
 
 function VerifyForm() {
   const router = useRouter();
@@ -70,11 +70,10 @@ function VerifyForm() {
 
         {/* Logo */}
         <div style={{ textAlign: "center", marginBottom: 32 }}>
-          <Link href="/" style={{ display: "inline-flex", alignItems: "center", gap: 8, textDecoration: "none", marginBottom: 24 }}>
-            <div style={{ width: 36, height: 36, borderRadius: 10, background: "var(--primary-2)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <Zap size={18} color="#fff" fill="#fff" />
-            </div>
-            <span style={{ fontFamily: "var(--font-sans)", fontSize: 20, fontWeight: 800, color: "var(--text-1)", letterSpacing: "-0.02em" }}>promti</span>
+          <Link href="/" style={{ textDecoration: "none", marginBottom: 24, display: "inline-block" }}>
+            <span style={{ fontFamily: "var(--font-sans)", fontSize: 22, fontWeight: 900, letterSpacing: "-0.04em", background: "linear-gradient(135deg, #fff 0%, var(--primary) 60%, var(--violet) 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              promitly
+            </span>
           </Link>
 
           <div style={{ width: 52, height: 52, borderRadius: 14, background: "rgba(99,102,241,0.12)", border: "1px solid rgba(99,102,241,0.2)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" }}>

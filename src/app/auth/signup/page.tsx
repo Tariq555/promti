@@ -3,7 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { signUp } from "@/lib/supabase";
-import { Zap, Mail, User, Eye, EyeOff, ArrowRight } from "lucide-react";
+import { Mail, User, Eye, EyeOff, ArrowRight } from "lucide-react";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -44,11 +44,10 @@ export default function SignupPage() {
       <div style={{ width: "100%", maxWidth: 400 }}>
         {/* Logo */}
         <div style={{ textAlign: "center", marginBottom: 32 }}>
-          <Link href="/" style={{ display: "inline-flex", alignItems: "center", gap: 8, textDecoration: "none", marginBottom: 24 }}>
-            <div style={{ width: 36, height: 36, borderRadius: 10, background: "var(--primary-2)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <Zap size={18} color="#fff" fill="#fff" />
-            </div>
-            <span style={{ fontFamily: "var(--font-sans)", fontSize: 20, fontWeight: 800, color: "var(--text-1)", letterSpacing: "-0.02em" }}>promti</span>
+          <Link href="/" style={{ textDecoration: "none", marginBottom: 24, display: "inline-block" }}>
+            <span style={{ fontFamily: "var(--font-sans)", fontSize: 22, fontWeight: 900, letterSpacing: "-0.04em", background: "linear-gradient(135deg, #fff 0%, var(--primary) 60%, var(--violet) 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              promitly
+            </span>
           </Link>
           <h1 style={{ fontFamily: "var(--font-sans)", fontSize: 24, fontWeight: 700, color: "var(--text-1)", marginBottom: 6 }}>Create your account</h1>
           <p style={{ fontSize: 13, color: "var(--text-3)" }}>Free forever. Unlock all prompts instantly.</p>

@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 
-const LAST_UPDATED = "15 April 2025";
-const CONTACT_EMAIL = "privacy@promti.com";
+const LAST_UPDATED = "15 April 2026";
+const CONTACT_EMAIL = "privacy@promitly.com";
 
 export default function PrivacyPage() {
   return (
@@ -22,7 +22,7 @@ export default function PrivacyPage() {
 
             <div style={{ display: "flex", flexDirection: "column", gap: 36 }}>
               <Section title="1. Who we are">
-                <P>PROMTI ("we", "us", "our") operates the website at promti.com — an AI prompt library. Our servers are hosted in the European Union (Ireland, AWS eu-west-1) via Supabase.</P>
+                <P>PROMITLY ("we", "us", "our") operates the website at promitly.com — an AI prompt library. Our servers are hosted in the European Union (Ireland, AWS eu-west-1) via Supabase.</P>
                 <P>For data protection enquiries, contact us at <a href={`mailto:${CONTACT_EMAIL}`} style={{ color: "var(--primary)" }}>{CONTACT_EMAIL}</a>.</P>
               </Section>
 
@@ -93,7 +93,7 @@ export default function PrivacyPage() {
               </Section>
 
               <Section title="9. Children">
-                <P>PROMTI is not directed at children under 13 years of age. We do not knowingly collect personal data from children. If you believe a child has provided us personal data, contact us immediately and we will delete it.</P>
+                <P>PROMITLY is not directed at children under 13 years of age. We do not knowingly collect personal data from children. If you believe a child has provided us personal data, contact us immediately and we will delete it.</P>
               </Section>
 
               <Section title="10. Changes to this policy">
@@ -143,8 +143,8 @@ function Footer() {
   return (
     <footer style={{ background: "var(--bg)", borderTop: "1px solid var(--border)", padding: "32px 0" }}>
       <div className="page" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
-        <Link href="/" style={{ fontFamily: "var(--font-sans)", fontSize: 15, fontWeight: 700, color: "var(--text-2)", textDecoration: "none" }}>promti</Link>
-        <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--text-4)" }}>© 2025 PROMTI · All rights reserved</span>
+        <Link href="/" style={{ fontFamily: "var(--font-sans)", fontSize: 15, fontWeight: 700, color: "var(--text-2)", textDecoration: "none" }}>promitly</Link>
+        <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--text-4)" }}>© 2026 PROMITLY · All rights reserved</span>
         <div style={{ display: "flex", gap: 16 }}>
           {[["Privacy", "/privacy"], ["Terms", "/terms"], ["Contact", "/contact"]].map(([l, h]) => (
             <Link key={l} href={h} style={{ fontSize: 12, color: "var(--text-3)", textDecoration: "none" }}>{l}</Link>

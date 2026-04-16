@@ -4,8 +4,8 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import { Mail, MessageSquare, ShieldCheck, Trash2, CheckCircle2 } from "lucide-react";
 
-const SUPPORT_EMAIL = "support@promti.com";
-const PRIVACY_EMAIL = "privacy@promti.com";
+const SUPPORT_EMAIL = "support@promitly.com";
+const PRIVACY_EMAIL = "privacy@promitly.com";
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", subject: "general", message: "" });
@@ -156,8 +156,8 @@ export default function ContactPage() {
 
       <footer style={{ background: "var(--bg)", borderTop: "1px solid var(--border)", padding: "32px 0" }}>
         <div className="page" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
-          <Link href="/" style={{ fontFamily: "var(--font-sans)", fontSize: 15, fontWeight: 700, color: "var(--text-2)", textDecoration: "none" }}>promti</Link>
-          <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--text-4)" }}>© 2025 PROMTI · All rights reserved</span>
+          <Link href="/" style={{ fontFamily: "var(--font-sans)", fontSize: 15, fontWeight: 700, color: "var(--text-2)", textDecoration: "none" }}>promitly</Link>
+          <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--text-4)" }}>© 2026 PROMITLY · All rights reserved</span>
           <div style={{ display: "flex", gap: 16 }}>
             {[["Privacy", "/privacy"], ["Terms", "/terms"], ["Contact", "/contact"]].map(([l, h]) => (
               <Link key={l} href={h} style={{ fontSize: 12, color: "var(--text-3)", textDecoration: "none" }}>{l}</Link>

@@ -121,7 +121,7 @@ export async function trackCopy(
 
 /** Compute live user count from date math (no DB call needed) */
 export function getLiveUserCount(): number {
-  const LAUNCH   = new Date("2025-01-15").getTime();
+  const LAUNCH   = new Date("2026-01-15").getTime();
   const DAILY    = 2.3;
   const BASE     = 2314;
   const days     = Math.floor((Date.now() - LAUNCH) / 86_400_000);

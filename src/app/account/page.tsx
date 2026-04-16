@@ -69,7 +69,7 @@ export default function AccountPage() {
                 </div>
                 <div>
                   <div style={{ fontWeight: 600, color: "var(--text-1)", fontSize: 15 }}>
-                    {user.user_metadata?.full_name || "PROMTI User"}
+                    {user.user_metadata?.full_name || "PROMITLY User"}
                   </div>
                   <div style={{ fontSize: 13, color: "var(--text-3)" }}>{user.email}</div>
                 </div>
@@ -186,8 +186,8 @@ export default function AccountPage() {
 
       <footer style={{ background: "var(--bg)", borderTop: "1px solid var(--border)", padding: "32px 0" }}>
         <div className="page" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
-          <span style={{ fontFamily: "var(--font-sans)", fontSize: 15, fontWeight: 700, color: "var(--text-2)" }}>promti</span>
-          <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--text-4)" }}>© 2025 PROMTI · All rights reserved</span>
+          <span style={{ fontFamily: "var(--font-sans)", fontSize: 15, fontWeight: 700, color: "var(--text-2)" }}>promitly</span>
+          <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--text-4)" }}>© 2026 PROMITLY · All rights reserved</span>
           <div style={{ display: "flex", gap: 16 }}>
             {[["Privacy", "/privacy"], ["Terms", "/terms"], ["Contact", "/contact"]].map(([l, h]) => (
               <Link key={l} href={h} style={{ fontSize: 12, color: "var(--text-3)", textDecoration: "none" }}>{l}</Link>
