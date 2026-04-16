@@ -5,13 +5,15 @@ import Navbar from "@/components/Navbar";
 import Counter from "@/components/Counter";
 import { getLiveUserCount } from "@/lib/supabase";
 import { CATEGORIES } from "@/data/prompts";
-import { BookOpen, Code2, Server, PenLine, Share2, Briefcase, Sparkles, FileText, Palette, Search, ArrowRight, Lock, Cpu, Layers, Zap as ZapIcon, TrendingDown, CheckCircle2 } from "lucide-react";
+import { BookOpen, Code2, Server, PenLine, Share2, Briefcase, Sparkles, FileText, Palette, Search, ArrowRight, Lock, Cpu, Layers, Zap as ZapIcon, TrendingDown, CheckCircle2, BookmarkCheck } from "lucide-react";
+import { useAuth } from "@/context/AuthContext";
 
 const ICON_MAP: Record<string, React.ComponentType<{ size?: number; color?: string; strokeWidth?: number }>> = {
   BookOpen, Code2, Server, PenLine, Share2, Briefcase, Sparkles, FileText, Palette, Search, Cpu, Layers,
 };
 
 export default function Home() {
+  const { user, loading: authLoading } = useAuth();
   const [count, setCount] = useState(2314);
 
   useEffect(() => {
@@ -51,9 +53,11 @@ export default function Home() {
               <Link href="/categories" className="btn btn-primary" style={{ fontSize: 15, padding: "11px 24px" }}>
                 Browse Prompts <ArrowRight size={16} />
               </Link>
-              <Link href="/auth/signup" className="btn btn-ghost" style={{ fontSize: 15, padding: "11px 24px" }}>
-                Sign up free
-              </Link>
+              {!authLoading && !user && (
+                <Link href="/auth/signup" className="btn btn-ghost" style={{ fontSize: 15, padding: "11px 24px" }}>
+                  Sign up free
+                </Link>
+              )}
             </div>
 
             {/* Counter */}
@@ -264,20 +268,27 @@ export default function Home() {
           <div className="page">
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }} className="lg-2col">
               <div>
-                <div className="chip" style={{ marginBottom: 20 }}>Why sign up?</div>
+                <div className="chip" style={{ marginBottom: 20 }}>{user ? "You're all set" : "Why sign up?"}</div>
                 <h2 style={{ fontFamily: "var(--font-sans)", fontSize: "clamp(26px,4vw,40px)", fontWeight: 700, color: "var(--text-1)", letterSpacing: "-0.02em", marginBottom: 20, lineHeight: 1.2 }}>
-                  Free to browse.<br />Powerful when you sign up.
+                  {user ? <>All prompts<br />unlocked for you.</> : <>Free to browse.<br />Powerful when you sign up.</>}
                 </h2>
                 <p style={{ fontSize: 15, lineHeight: 1.75, color: "var(--text-2)", marginBottom: 28 }}>
-                  Anyone can see what a prompt does. But only signed-up users can copy the full prompt, save their favourites, and unlock the premium library.
+                  {user
+                    ? "You have full access to all 130+ prompts. Copy any prompt, save your favourites, and use them with any AI model."
+                    : "Anyone can see what a prompt does. But only signed-up users can copy the full prompt, save their favourites, and unlock the premium library."}
                 </p>
                 <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-                  {[
+                  {(user ? [
+                    ["Copy in one click", "Paste into any AI — ChatGPT, Claude, Gemini, Grok, Mistral, Llama, DeepSeek, Perplexity, Copilot, and more"],
+                    ["All 130+ prompts unlocked", "Every premium prompt is fully visible and copyable — no paywalls"],
+                    ["Save your favourites", "Bookmark prompts and access your personal library from anywhere"],
+                    ["Token-efficient prompts", "Use our AI & Token Efficiency category to cut your API costs by 80%"],
+                  ] : [
                     ["Copy in one click", "Paste into any AI — ChatGPT, Claude, Gemini, Grok, Mistral, Llama, DeepSeek, Perplexity, Copilot, and more"],
                     ["Unlock the premium library", "110+ prompts including the structured, token-efficient ones that actually work"],
                     ["Save your favourites", "Bookmark prompts and access your personal library from anywhere"],
                     ["It's completely free", "No credit card. No trial. No catch — we're growing the user count, not billing you."],
-                  ].map(([title, desc]) => (
+                  ]).map(([title, desc]) => (
                     <div key={title} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
                       <CheckCircle2 size={16} color="var(--emerald)" style={{ flexShrink: 0, marginTop: 2 }} />
                       <div>
@@ -289,28 +300,51 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Locked prompt preview card */}
+              {/* Prompt preview card — unlocked for signed-in users */}
               <div style={{ position: "relative" }}>
-                <div className="card" style={{ padding: "22px", position: "relative", paddingBottom: 80 }}>
+                <div className="card" style={{ padding: "22px", position: "relative", paddingBottom: !authLoading && user ? 22 : 80 }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
                     <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.14em", color: "var(--text-3)" }}>PREMIUM PROMPT</span>
-                    <div style={{ display: "flex", alignItems: "center", gap: 5, background: "rgba(251,113,133,0.1)", border: "1px solid rgba(251,113,133,0.2)", borderRadius: 100, padding: "3px 10px" }}>
-                      <Lock size={10} color="var(--rose)" />
-                      <span style={{ fontSize: 10, color: "var(--rose)", fontFamily: "var(--font-mono)" }}>LOCKED</span>
-                    </div>
+                    {!authLoading && user ? (
+                      <div style={{ display: "flex", alignItems: "center", gap: 5, background: "rgba(52,211,153,0.1)", border: "1px solid rgba(52,211,153,0.2)", borderRadius: 100, padding: "3px 10px" }}>
+                        <CheckCircle2 size={10} color="var(--emerald)" />
+                        <span style={{ fontSize: 10, color: "var(--emerald)", fontFamily: "var(--font-mono)" }}>UNLOCKED</span>
+                      </div>
+                    ) : (
+                      <div style={{ display: "flex", alignItems: "center", gap: 5, background: "rgba(251,113,133,0.1)", border: "1px solid rgba(251,113,133,0.2)", borderRadius: 100, padding: "3px 10px" }}>
+                        <Lock size={10} color="var(--rose)" />
+                        <span style={{ fontSize: 10, color: "var(--rose)", fontFamily: "var(--font-mono)" }}>LOCKED</span>
+                      </div>
+                    )}
                   </div>
                   <div style={{ fontWeight: 600, color: "var(--text-1)", fontSize: 15, marginBottom: 4 }}>Audit & Slash Your Prompt Tokens</div>
                   <div style={{ fontSize: 12, color: "var(--text-3)", marginBottom: 14 }}>Cut any prompt by 50%+ without losing output quality</div>
-                  <div style={{ background: "#0b0b16", borderRadius: 8, padding: "12px 14px", filter: "blur(4px)", userSelect: "none" }}>
+                  <div style={{
+                    background: "#0b0b16", borderRadius: 8, padding: "12px 14px",
+                    filter: (!authLoading && user) ? "none" : "blur(4px)",
+                    userSelect: (!authLoading && user) ? "auto" : "none",
+                    transition: "filter 0.3s",
+                  }}>
                     <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--text-2)", lineHeight: 1.7 }}>
-                      Audit this prompt and rewrite it to use the fewest tokens possible. Analyse each section: what does the model already know? Where are 20 words replacing 4?...
+                      Audit this prompt and rewrite it to use the fewest tokens possible. Analyse each section: what does the model already know? Where are 20 words replacing 4? Remove all filler. Output only the rewritten prompt.
                     </div>
                   </div>
-                  <div style={{ position: "absolute", bottom: 20, left: 22, right: 22 }}>
-                    <Link href="/auth/signup" className="btn btn-primary" style={{ width: "100%", justifyContent: "center", fontSize: 13 }}>
-                      Sign up free to unlock <Lock size={13} />
-                    </Link>
-                  </div>
+                  {!authLoading && user ? (
+                    <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
+                      <Link href="/categories/ai-tools" className="btn btn-primary" style={{ flex: 1, justifyContent: "center", fontSize: 13 }}>
+                        Browse all prompts <ArrowRight size={13} />
+                      </Link>
+                      <Link href="/saved" className="btn btn-ghost btn-sm" style={{ padding: "7px 12px" }}>
+                        <BookmarkCheck size={14} color="var(--primary)" />
+                      </Link>
+                    </div>
+                  ) : (
+                    <div style={{ position: "absolute", bottom: 20, left: 22, right: 22 }}>
+                      <Link href="/auth/signup" className="btn btn-primary" style={{ width: "100%", justifyContent: "center", fontSize: 13 }}>
+                        Sign up free to unlock <Lock size={13} />
+                      </Link>
+                    </div>
+                  )}
                 </div>
                 <div style={{ position: "absolute", inset: -20, background: "radial-gradient(circle at 50% 50%, rgba(99,102,241,0.06), transparent 70%)", borderRadius: 20, zIndex: -1 }} />
               </div>
@@ -322,18 +356,20 @@ export default function Home() {
         <section style={{ padding: "80px 0", background: "var(--surface)", borderTop: "1px solid var(--border)" }}>
           <div className="page" style={{ textAlign: "center" }}>
             <h2 style={{ fontFamily: "var(--font-sans)", fontSize: "clamp(26px,4vw,42px)", fontWeight: 700, color: "var(--text-1)", letterSpacing: "-0.02em", marginBottom: 14 }}>
-              Start using better prompts today.
+              {user ? "Keep exploring." : "Start using better prompts today."}
             </h2>
             <p style={{ fontSize: 15, color: "var(--text-2)", marginBottom: 32, maxWidth: 400, margin: "0 auto 32px" }}>
-              Free to browse. Sign up to save, copy, and unlock all prompts.
+              {user ? "All 130+ prompts are unlocked. Browse every category and copy what you need." : "Free to browse. Sign up to save, copy, and unlock all prompts."}
             </p>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
               <Link href="/categories" className="btn btn-primary" style={{ fontSize: 15, padding: "11px 26px" }}>
-                Browse Prompts
+                Browse Prompts <ArrowRight size={15} />
               </Link>
-              <Link href="/auth/signup" className="btn btn-ghost" style={{ fontSize: 15, padding: "11px 26px" }}>
-                Create free account
-              </Link>
+              {!user && (
+                <Link href="/auth/signup" className="btn btn-ghost" style={{ fontSize: 15, padding: "11px 26px" }}>
+                  Create free account
+                </Link>
+              )}
             </div>
           </div>
         </section>

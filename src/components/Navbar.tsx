@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Zap, Menu, X, UserCircle } from "lucide-react";
+import { Menu, X, UserCircle } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 import { signOut } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
@@ -47,11 +47,16 @@ export default function Navbar() {
       <div className="page" style={{ height: 58, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
 
         {/* Logo */}
-        <Link href="/" style={{ display: "flex", alignItems: "center", gap: 8, textDecoration: "none" }}>
-          <div style={{ width: 30, height: 30, borderRadius: 8, background: "var(--primary-2)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <Zap size={16} color="#fff" fill="#fff" />
-          </div>
-          <span style={{ fontFamily: "var(--font-sans)", fontSize: 18, fontWeight: 800, color: "var(--text-1)", letterSpacing: "-0.02em" }}>
+        <Link href="/" style={{ textDecoration: "none" }}>
+          <span style={{
+            fontFamily: "var(--font-sans)",
+            fontSize: 20,
+            fontWeight: 900,
+            letterSpacing: "-0.04em",
+            background: "linear-gradient(135deg, #fff 0%, var(--primary) 60%, var(--violet) 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}>
             promti
           </span>
         </Link>
