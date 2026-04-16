@@ -31,8 +31,34 @@ export default function Home() {
           <div className="page" style={{ width: "100%", paddingTop: 60, paddingBottom: 80 }}>
 
             {/* Chip */}
-            <div className="anim-up d1" style={{ marginBottom: 28 }}>
+            <div className="anim-up d1" style={{ marginBottom: 28, display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
               <span className="chip">AI Prompt Library</span>
+              <span style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                padding: "4px 12px",
+                borderRadius: 999,
+                fontSize: 11,
+                fontWeight: 700,
+                fontFamily: "var(--font-mono)",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                background: "linear-gradient(135deg, rgba(167,139,250,0.15) 0%, rgba(129,140,248,0.15) 100%)",
+                border: "1px solid rgba(167,139,250,0.35)",
+                color: "var(--violet)",
+              }}>
+                <span style={{
+                  width: 6,
+                  height: 6,
+                  borderRadius: "50%",
+                  background: "var(--violet)",
+                  boxShadow: "0 0 6px var(--violet)",
+                  animation: "pulse 2s ease-in-out infinite",
+                  display: "inline-block",
+                }} />
+                AI · Coming Soon
+              </span>
             </div>
 
             {/* Headline */}
