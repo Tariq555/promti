@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Counter from "@/components/Counter";
+import ElectricBorder from "@/components/ElectricBorder";
 import { getLiveUserCount } from "@/lib/supabase";
 import { CATEGORIES } from "@/data/prompts";
 import { BookOpen, Code2, Server, PenLine, Share2, Briefcase, Sparkles, FileText, Palette, Search, ArrowRight, Lock, Cpu, Layers, Zap as ZapIcon, TrendingDown, CheckCircle2, BookmarkCheck } from "lucide-react";
@@ -87,25 +88,33 @@ export default function Home() {
             </div>
 
             {/* Counter */}
-            <div style={{ display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
-              <div style={{ display: "flex", alignItems: "baseline", gap: 4 }}>
-                <Counter
-                  value={count}
-                  places={[1000, 100, 10, 1]}
-                  fontSize={38}
-                  padding={4}
-                  gap={2}
-                  textColor="var(--text-1)"
-                  fontWeight={700}
-                  gradientFrom="var(--bg)"
-                  counterStyle={{ fontFamily: "var(--font-sans)" }}
-                />
+            <ElectricBorder
+              color="#818cf8"
+              speed={0.8}
+              chaos={0.1}
+              borderRadius={16}
+              style={{ display: "inline-flex" }}
+            >
+              <div style={{ display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap", padding: "16px 24px", background: "rgba(129,140,248,0.05)", borderRadius: 16 }}>
+                <div style={{ display: "flex", alignItems: "baseline", gap: 4 }}>
+                  <Counter
+                    value={count}
+                    places={[1000, 100, 10, 1]}
+                    fontSize={38}
+                    padding={4}
+                    gap={2}
+                    textColor="var(--text-1)"
+                    fontWeight={700}
+                    gradientFrom="rgba(129,140,248,0.05)"
+                    counterStyle={{ fontFamily: "var(--font-sans)" }}
+                  />
+                </div>
+                <div>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: "var(--text-2)" }}>people using PROMITLY</div>
+                  <div style={{ fontSize: 11, color: "var(--text-3)", fontFamily: "var(--font-mono)" }}>the community is growing ↑</div>
+                </div>
               </div>
-              <div>
-                <div style={{ fontSize: 13, fontWeight: 600, color: "var(--text-2)" }}>people using PROMITLY</div>
-                <div style={{ fontSize: 11, color: "var(--text-3)", fontFamily: "var(--font-mono)" }}>the community is growing ↑</div>
-              </div>
-            </div>
+            </ElectricBorder>
           </div>
         </section>
 
