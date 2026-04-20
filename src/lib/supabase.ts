@@ -121,7 +121,7 @@ export async function trackCopy(
 
 /** Compute live user count with subtle daily fluctuation */
 export function getLiveUserCount(): number {
-  const BASE  = 3628;
+  const BASE  = 6086;
   // Use today's date as a seed for a deterministic ±8 wobble
   const today = new Date();
   const seed  = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();

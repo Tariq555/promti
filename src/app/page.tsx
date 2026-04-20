@@ -18,7 +18,7 @@ const ICON_MAP: Record<string, React.ComponentType<{ size?: number; color?: stri
 
 export default function Home() {
   const { user, loading: authLoading } = useAuth();
-  const [count, setCount] = useState(3628);
+  const [count, setCount] = useState(6086);
 
   useEffect(() => {
     const t = setTimeout(() => setCount(getLiveUserCount()), 600);
