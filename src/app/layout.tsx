@@ -63,6 +63,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://promitly.com",
   },
+  verification: {
+    google: "atNFTeLM_ZHSDmWlj1I0Qu7vwUKWgITPF23f3zhvG1M",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
