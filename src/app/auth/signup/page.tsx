@@ -34,8 +34,9 @@ export default function SignupPage() {
     if (err) {
       setError(err.message || "Something went wrong. Please try again.");
     } else {
-      // Redirect to verify page with email as query param
-      router.push(`/auth/verify?email=${encodeURIComponent(email)}`);
+      // Email confirmation is disabled in Supabase, so signUp returns a
+      // live session — the user is already signed in here.
+      router.push("/categories");
     }
   };
 

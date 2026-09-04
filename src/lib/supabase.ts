@@ -10,7 +10,7 @@ export const supabase: SupabaseClient | null = live
 
 // ─── Auth helpers ─────────────────────────────────────
 
-/** Sign up — Supabase sends a 6-digit OTP code to the user's email */
+/** Sign up — email confirmation is disabled, so this returns a live session */
 export async function signUp(email: string, password: string, name: string) {
   if (!supabase) return { user: null, error: { message: "Backend not configured." } };
   const { data, error } = await supabase.auth.signUp({
@@ -19,13 +19,6 @@ export async function signUp(email: string, password: string, name: string) {
     options: { data: { full_name: name } },
   });
   return { user: data.user, error: error ?? null };
-}
-
-/** Verify 6-digit OTP sent after signup */
-export async function verifyOtp(email: string, token: string) {
-  if (!supabase) return { error: { message: "Backend not configured." } };
-  const { error } = await supabase.auth.verifyOtp({ email, token, type: "signup" });
-  return { error: error ?? null };
 }
 
 /** Sign in */
