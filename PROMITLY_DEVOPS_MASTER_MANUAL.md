@@ -6,11 +6,11 @@
 |---|---|
 | **Manual version** | `v0.2.0` |
 | **Created** | 2026-08-31 |
-| **Last updated** | 2026-09-05 |
+| **Last updated** | 2026-09-06 |
 | **Laboratory system** | Promitly — `~/Documents/promitly` — live at `https://promitly.com` |
 | **Repository** | `github.com/Tariq555/promitly` |
 | **Baseline audit** | Phase 0 discovery, completed 2026-08-31 (read-only) |
-| **Status** | **PHASE 1 COMPLETE — 12 / 12 `VERIFIED` (2026-09-05).** R-01 resolved, R-14 closed, `main` protected. Phase 2 unlocked. |
+| **Status** | Phase 1 complete (12/12). **Phase 2 in progress — 6 / 8 `VERIFIED`.** 33 tests passing. Remaining: Playwright (P2-06, P2-07). |
 
 > **This manual is a living document.**
 > It is not written once and archived. Every time you implement, break, debug, or recover
@@ -191,18 +191,18 @@ designed to push you across.
 > Update these numbers only when a task moves to `VERIFIED` or `MASTERED` in the Master Checklist.
 
 ```text
-PROMITLY DEVOPS PROGRESS — as of 2026-09-05
+PROMITLY DEVOPS PROGRESS — as of 2026-09-06
 
 Overall Progress
-███░░░░░░░░░░░░░░░░░  13%    (12 / 96 tasks verified)
+████░░░░░░░░░░░░░░░░  19%    (18 / 96 tasks verified)
 
-DevOps Knowledge        ██░░░░░░░░░░░░░░░░░░   8%
-Hands-on Implementation ██░░░░░░░░░░░░░░░░░░  10%
+DevOps Knowledge        ███░░░░░░░░░░░░░░░░░  14%
+Hands-on Implementation ███░░░░░░░░░░░░░░░░░  17%
 Professional English    ██░░░░░░░░░░░░░░░░░░   8%   ← README + SYSTEM.md written in English
 Production Readiness    ████░░░░░░░░░░░░░░░░  20%   ← 11% still borrowed from Vercel
 Interview Readiness     ██░░░░░░░░░░░░░░░░░░   8%
 
-Phase 1: 12 / 12 VERIFIED — COMPLETE 2026-09-05. Phase 2 unlocked.
+Phase 1: 12/12 COMPLETE  ·  Phase 2: 6/8 — Playwright (P2-06, P2-07) remaining
 ```
 
 **Why is Production Readiness already 11% when nothing has been done?**
@@ -815,7 +815,7 @@ decision is recorded **with reasoning**, and with the condition that would chang
 # PART A — MASTER CHECKLIST
 ## قائمة المهام الرئيسية
 
-**Total tasks: 96.  Verified: 2.  Mastered: 0.**
+**Total tasks: 96.  Verified: 18.  Mastered: 0.**
 
 **Rules:**
 1. Never mark `VERIFIED` without evidence recorded in the Change Log (Part B).
@@ -844,16 +844,18 @@ decision is recorded **with reasoning**, and with the condition that would chang
 | P1-11 | `VERIFIED` | Open the first ever pull request; observe the Vercel preview deployment | ⭐⭐ | Promitly | 🟦 | R-14 | PR link + preview URL |
 | P1-12 | `VERIFIED` | Enable branch protection on `main` | ⭐⭐⭐ | Promitly | 🟧 | R-14 | Ruleset `promitly` active on the default branch, bypass list empty, `current_user_can_bypass: never`. Direct push rejected: `GH013 … Changes must be made through a pull request` |
 
-## PHASE 2 — Testing  (8 tasks) 🔒
+## PHASE 2 — Testing  (8 tasks) — 🔓 UNLOCKED 2026-09-06
 
-`P2-01` Test strategy document (what we test and what we deliberately do not) ·
-`P2-02` Install and configure Vitest ·
-`P2-03` First unit test: `buildOptimizedPrompt()` ·
-`P2-04` Unit tests for the pure logic in `src/lib` ·
-`P2-05` API route integration test ·
-`P2-06` Playwright setup ·
-`P2-07` First E2E smoke test (homepage loads, nav works) ·
-`P2-08` Coverage reporting + agree an honest threshold
+| ID | Status | Task | Diff | Lab | Risk | Resolves | Evidence required |
+|---|---|---|---|---|---|---|---|
+| P2-01 | `VERIFIED` | Test strategy document (what we test and what we deliberately do not) | ⭐⭐ | Promitly | 🟦 | R-04 | `TESTING.md` committed |
+| P2-02 | `VERIFIED` | Install and configure Vitest | ⭐ | Promitly | 🟦 | R-04 | `npm test` runs |
+| P2-03 | `VERIFIED` | First unit test: `buildOptimizedPrompt()` | ⭐⭐ | Promitly | 🟦 | R-04 | 20 tests in `src/lib/prompt-builder.test.ts`, all passing |
+| P2-04 | `VERIFIED` | Unit tests for the pure logic in `src/lib` | ⭐⭐ | Promitly | 🟦 | R-04 | 5 tests for `getLiveUserCount()`, incl. the local-midnight rollover |
+| P2-05 | `VERIFIED` | API route integration test | ⭐⭐⭐ | Promitly | 🟦 | R-04 | 8 tests against the real `POST` handler |
+| P2-06 | `NOT STARTED` | Playwright setup | ⭐⭐⭐ | Promitly | 🟦 | R-04 | Playwright installed, one browser runs |
+| P2-07 | `NOT STARTED` | First E2E smoke test (homepage loads, nav works) | ⭐⭐ | Promitly | 🟦 | R-04 | Passing run. **Must stay on anonymous paths** until P5-02 — preview shares production's Supabase project |
+| P2-08 | `VERIFIED` | Coverage reporting + agree an honest threshold | ⭐⭐ | Promitly | 🟦 | R-04 | 90% lines/functions/statements, 85% branches, scoped — currently 100% |
 
 ## PHASE 3 — Continuous Integration  (8 tasks) 🔒
 
@@ -2070,6 +2072,23 @@ only part that could not have been copied from anywhere else.
 | What I learned | In English. Two or three sentences |
 | What broke | If anything did. Be honest — this column is the most valuable one |
 ```
+
+---
+
+### 2026-09-06 — Phase 2: testing foundation (P2-01 to P2-05, P2-08)
+
+| Field | Value |
+|---|---|
+| Task ID | P2-01, P2-02, P2-03, P2-04, P2-05, P2-08 |
+| Risk level | 🟦 no runtime behaviour change |
+| Why | Zero automated tests existed (R-04). The only quality gate was whether TypeScript compiled |
+| Files changed | `TESTING.md` (new) · `vitest.config.ts` (new) · `src/lib/prompt-builder.ts` (new) · `src/lib/prompt-builder.test.ts` (new) · `src/lib/supabase.test.ts` (new) · `src/app/api/generate-prompt/route.test.ts` (new) · `src/app/api/generate-prompt/route.ts` · `package.json` |
+| Infrastructure changed | None |
+| Commit / PR | PR #3 |
+| Verification | `npm test` → **33 passed (3 files)**. `npm run test:coverage` → 100% statements / branches / functions / lines across the measured scope. `npm run build` → green on Node v24.20.0, route table unchanged |
+| Rollback | `git revert`. The only production-code change is moving a pure function into `src/lib`; behaviour is identical and asserted by the tests |
+| What I learned | `buildOptimizedPrompt()` could not be tested where it lived. Next.js only permits specific exports from a `route.ts`, so the pure function had to move to `src/lib` first. That is worth noticing: **the code was untestable because of where it sat, not because of what it did** — testability is a structural property, and the refactor improved the design independently of the tests |
+| What broke | **The first run failed, and the failure was real.** `getLiveUserCount()` seeds its wobble from `getFullYear/getMonth/getDate` — *local* date methods — so the counter rolls over at each viewer's own midnight, not UTC. My test crossed a Stockholm midnight and got two different numbers. Nobody knew that; two users in different timezones see different counts at the same instant. Harmless for a cosmetic counter, but it is now pinned by a test instead of being folklore. Test rule 6 in `TESTING.md` exists because of it |
 
 ---
 
