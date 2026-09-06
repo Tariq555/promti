@@ -6,11 +6,11 @@
 |---|---|
 | **Manual version** | `v0.2.0` |
 | **Created** | 2026-08-31 |
-| **Last updated** | 2026-09-04 |
+| **Last updated** | 2026-09-05 |
 | **Laboratory system** | Promitly — `~/Documents/promitly` — live at `https://promitly.com` |
 | **Repository** | `github.com/Tariq555/promitly` |
 | **Baseline audit** | Phase 0 discovery, completed 2026-08-31 (read-only) |
-| **Status** | Phase 1 near complete — 10 / 12 `VERIFIED`. **R-01 RESOLVED 2026-09-04: production auth rebuilt on Supabase `nlfkhfqvfmrjhcirywqk` and verified live.** P1-06 `IMPLEMENTING`, P1-12 `BLOCKED`. |
+| **Status** | **PHASE 1 COMPLETE — 12 / 12 `VERIFIED` (2026-09-05).** R-01 resolved, R-14 closed, `main` protected. Phase 2 unlocked. |
 
 > **This manual is a living document.**
 > It is not written once and archived. Every time you implement, break, debug, or recover
@@ -191,10 +191,10 @@ designed to push you across.
 > Update these numbers only when a task moves to `VERIFIED` or `MASTERED` in the Master Checklist.
 
 ```text
-PROMITLY DEVOPS PROGRESS — as of 2026-09-04
+PROMITLY DEVOPS PROGRESS — as of 2026-09-05
 
 Overall Progress
-██░░░░░░░░░░░░░░░░░░  10%    (10 / 96 tasks verified)
+███░░░░░░░░░░░░░░░░░  13%    (12 / 96 tasks verified)
 
 DevOps Knowledge        ██░░░░░░░░░░░░░░░░░░   8%
 Hands-on Implementation ██░░░░░░░░░░░░░░░░░░  10%
@@ -202,7 +202,7 @@ Professional English    ██░░░░░░░░░░░░░░░░�
 Production Readiness    ████░░░░░░░░░░░░░░░░  20%   ← 11% still borrowed from Vercel
 Interview Readiness     ██░░░░░░░░░░░░░░░░░░   8%
 
-Phase 1: 10 / 12 VERIFIED · P1-06 IMPLEMENTING · P1-12 BLOCKED (sandbox denial)
+Phase 1: 12 / 12 VERIFIED — COMPLETE 2026-09-05. Phase 2 unlocked.
 ```
 
 **Why is Production Readiness already 11% when nothing has been done?**
@@ -836,13 +836,13 @@ decision is recorded **with reasoning**, and with the condition that would chang
 | P1-03 | `VERIFIED` | Write `SYSTEM.md` — the system-of-record document | ⭐⭐ | Promitly | 🟦 | R-10 | Committed file |
 | P1-04 | `VERIFIED` | Create `.env.example` with every required variable, no values | ⭐ | Promitly | 🟦 | R-10 | Committed file + clean-clone test |
 | P1-05 | `VERIFIED` | Rewrite `README.md` — replace the create-next-app boilerplate | ⭐ | Promitly | 🟦 | R-10 | Committed file |
-| P1-06 | `IMPLEMENTING` | Pin the Node version (`.nvmrc` + `engines`) | ⭐⭐ | Promitly | 🟦→🟧 | R-11 | Pinned to 24.20.0; `node -v` matches locally and clean clone built on it. **Outstanding:** Vercel build-log screenshot naming the Node version — not retrievable via CLI |
+| P1-06 | `VERIFIED` | Pin the Node version (`.nvmrc` + `engines`) | ⭐⭐ | Promitly | 🟦→🟧 | R-11 | Pinned 24.20.0. `node -v` matches, clean clone built on it, and `vercel project inspect promitly` reports `Node.js Version 24.x` — the platform's own resolution of `engines` |
 | P1-07 | `VERIFIED` | Prove the build is reproducible from a clean clone | ⭐⭐ | Promitly | 🟩 | R-11 | Full terminal transcript of clean clone → install → build |
 | P1-08 | `VERIFIED` | Repo hygiene: remove `npm-debug.log`, fix the `promti` package name | ⭐ | Promitly | 🟦 | R-16 | Commit SHA |
 | P1-09 | `VERIFIED` | Remove the dead `@anthropic-ai/sdk` dependency | ⭐⭐ | Promitly | 🟦 | R-15 | Commit + successful build |
 | P1-10 | `VERIFIED` | Learn and practise Git branching — first ever feature branch | ⭐⭐ | Promitly | 🟦 | R-14 | Branch pushed |
 | P1-11 | `VERIFIED` | Open the first ever pull request; observe the Vercel preview deployment | ⭐⭐ | Promitly | 🟦 | R-14 | PR link + preview URL |
-| P1-12 | `BLOCKED` | Enable branch protection on `main` | ⭐⭐⭐ | Promitly | 🟧 | R-14 | **BLOCKED:** writing GitHub repo settings was denied by the local agent sandbox. Ruleset is written and ready to apply — needs the owner to run it or grant permission |
+| P1-12 | `VERIFIED` | Enable branch protection on `main` | ⭐⭐⭐ | Promitly | 🟧 | R-14 | Ruleset `promitly` active on the default branch, bypass list empty, `current_user_can_bypass: never`. Direct push rejected: `GH013 … Changes must be made through a pull request` |
 
 ## PHASE 2 — Testing  (8 tasks) 🔒
 
@@ -2070,6 +2070,23 @@ only part that could not have been copied from anywhere else.
 | What I learned | In English. Two or three sentences |
 | What broke | If anything did. Be honest — this column is the most valuable one |
 ```
+
+---
+
+### 2026-09-05 — P1-06 and P1-12 closed: Phase 1 complete
+
+| Field | Value |
+|---|---|
+| Task ID | P1-06, P1-12 |
+| Risk level | 🟧 changes how `main` accepts writes |
+| Why | The two tasks left open on 2026-09-04. Closes R-14 |
+| Files changed | `PROMITLY_DEVOPS_MASTER_MANUAL.md` |
+| Infrastructure changed | GitHub ruleset `promitly` on the default branch: require a pull request (0 approvals), require linear history, restrict deletions, block force pushes. **Bypass list empty** |
+| Commit / PR | PR #1 merged as `09f2217`; this entry on branch `phase-1/close-out` |
+| Verification | `git push` to `main` → `remote: error: GH013 … Changes must be made through a pull request` → `! [remote rejected] main -> main`. API: `current_user_can_bypass: "never"`. `vercel project inspect promitly` → `Node.js Version 24.x` |
+| Rollback | `gh api -X DELETE repos/Tariq555/promitly/rulesets/22333809` |
+| What I learned | The first ruleset I saved looked protective and was not. It had *Restrict deletions* and *Block force pushes* but not *Require a pull request*, so `main` was safe from being destroyed and completely open to being bypassed. Reading the config back through the API is what caught it — the UI gives no sense of which rules actually matter |
+| What broke | Nothing. But the near-miss is the lesson: had I trusted the settings page instead of testing the control, P1-12 would have been marked done while direct pushes to production still worked |
 
 ---
 
